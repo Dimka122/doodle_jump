@@ -1,5 +1,7 @@
 #include<SFML/Graphics.hpp>
 #include<time.h>
+#include<iostream>
+#include<sstream>
 
 using namespace sf;
 
@@ -11,10 +13,17 @@ struct point
 
 int main()
 {
+	int healt = 0;
 	srand(time(0));
 
-	RenderWindow window(VideoMode(400,533), "Doodle_jump");
-	window.setFramerateLimit(60);
+	RenderWindow app(VideoMode(400,533), "Doodle_jump");
+	app.setFramerateLimit(60);
+
+	/*Font font;
+	font.loadFromFile("cambria.ttf");
+	Text text("",font, 20);
+	text.setColor(Color::Red);
+	text.setStyle(Text::Bold);*/ 
 
 	Texture t1, t2, t3;
 	t1.loadFromFile("image/background.png");
@@ -34,13 +43,13 @@ int main()
 	int x = 100, y = 100, h = 200;
 	float dx = 0, dy = 0;
 
-	while (window.isOpen())
+	while (app.isOpen())
 	{
 		Event event;
-		while (window.pollEvent(event))
+		while (app.pollEvent(event))
 		{
 			if (event.type == Event::Closed)
-				window.close();
+				app.close();
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::Right))x += 3;
@@ -63,16 +72,22 @@ int main()
 
 		sPers.setPosition(x, y);
 
-		window.draw(sBackground);
-		window.draw(sPers);
+		app.draw(sBackground);
+		app.draw(sPers);
 		for (int i = 0; i < 10; i++)
 		{
 			sPlat.setPosition(plat[i].x, plat[i].y);
-			window.draw(sPlat);
+			app.draw(sPlat);
 		}
+		/*int healt = 0;
+		healt++;
+		std::ostringstream playerHealtString;
+		playerHealtString << healt;
+		text.setString("POINTS:" + playerHealtString.str());
 
+		app.draw(text);*/ 
 
-		window.display();
+		app.display();
 	}
 	return 0;
 }

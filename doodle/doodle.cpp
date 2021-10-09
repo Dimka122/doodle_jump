@@ -11,7 +11,7 @@ int main()
 		Event event;
 		while (window.pollEvent(event))
 		{
-			if (event.type == Event::Closed)
+			if (event.type==Event::Closed)
 
 				window.close();
 		}

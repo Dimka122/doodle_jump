@@ -6,7 +6,7 @@ class DooDle {
 private:
 	float x, y;
 public:
-	float x, y, w, h, dx, dy, speed;
+	float w, h, dx, dy, speed;
 	int dir;
 	String File;
 	Image image;
@@ -35,5 +35,20 @@ public:
 
 		speed = 0;
 		sprite.setPosition(x, y);
+		interactionWithMap();
+	}
+	float getplayercoordinateX() {
+		return x;
+	}
+	float getplayercoordinateY() {
+		return y;
+	}
+	void interactionWithMap()
+	{
+		for(int i=y/32;i<(y+h)/32;i++)
+			for(int j=x/32;j<(x+w)/32;j++)
+			{
+				
+			}
 	}
 };
